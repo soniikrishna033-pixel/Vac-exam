@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayurveda Exam — One Night Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0b07;
+    --surface: #18120a;
+    --surface2: #221a0f;
+    --border: #3a2e1e;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --saffron: #e07b39;
+    --green: #4a8c5c;
+    --green-light: #6db882;
+    --red: #b84a4a;
+    --blue: #4a7ab8;
+    --text: #e8dcc8;
+    --text-dim: #a08060;
+    --text-faint: #5c4a30;
+    --accent: #c9a84c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.75;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  #sidebar {
+    width: 260px;
+    min-width: 260px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+  }
+
+  #sidebar::-webkit-scrollbar { width: 4px; }
+  #sidebar::-webkit-scrollbar-track { background: transparent; }
+  #sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .sidebar-header {
+    padding: 20px 18px 14px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+    z-index: 10;
+  }
+
+  .sidebar-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--gold);
+    line-height: 1.3;
+  }
+
+  .sidebar-header p {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  .progress-bar-wrap {
+    padding: 10px 18px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-bottom: 5px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  .section-group {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 0.62rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 4px 18px 6px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 18px;
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    transition: color 0.2s, background 0.2s;
+    cursor: pointer;
+  }
+
+  .nav-item:hover { color: var(--gold-light); background: rgba(201,168,76,0.05); }
+  .nav-item.done { color: var(--green-light); }
+  .nav-item.done .nav-num { background: var(--green); color: #fff; }
+
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    background: var(--border);
+    color: var(--text-faint);
+    padding: 1px 5px;
+    border-radius: 3px;
+    min-width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  /* ── MAIN CONTENT ── */
+  #main {
+    flex: 1;
+    padding: 40px 48px 80px;
+    max-width: 860px;
+  }
+
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    color: var(--gold);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .page-subtitle {
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .chapter-divider {
+    margin: 48px 0 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .chapter-divider span {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    color: var(--saffron);
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+
+  .chapter-divider::before, .chapter-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border));
+  }
+
+  .chapter-divider::before {
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* ── TOPIC CARD ── */
+  .topic-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .topic-card.done {
+    border-color: rgba(74,140,92,0.5);
+    background: rgba(74,140,92,0.03);
+  }
+
+  .topic-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .topic-header:hover { background: rgba(255,255,255,0.02); }
+
+  .topic-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .topic-card.done .topic-check {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  .topic-check::after {
+    content: '✓';
+    font-size: 12px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .topic-card.done .topic-check::after { opacity: 1; }
+
+  .topic-title-wrap { flex: 1; }
+
+  .topic-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--saffron);
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+
+  .topic-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    line-height: 1.3;
+  }
+
+  .topic-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    font-style: italic;
+    margin-top: 3px;
+  }
+
+  .expand-icon {
+    font-size: 0.7rem;
+    color: var(--text-faint);
+    transition: transform 0.25s;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .topic-card.open .expand-icon { transform: rotate(180deg); }
+
+  .topic-body {
+    display: none;
+    padding: 0 20px 22px 56px;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .topic-card.open .topic-body { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── CONTENT ELEMENTS ── */
+  .topic-body p {
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .sub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.88rem;
+    color: var(--gold);
+    font-style: italic;
+    margin: 16px 0 6px;
+  }
+
+  .item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 8px;
+    margin: 8px 0 12px;
+  }
+
+  .item-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+
+  .item-box-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--saffron);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .item-box-text {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0 12px;
+  }
+
+  .pill {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.76rem;
+    color: var(--text-dim);
+  }
+
+  .pill.highlight { border-color: var(--gold); color: var(--gold-light); }
+  .pill.warn { border-color: var(--red); color: #e08080; }
+  .pill.good { border-color: var(--green); color: var(--green-light); }
+
+  .warn-box {
+    background: rgba(184,74,74,0.1);
+    border: 1px solid rgba(184,74,74,0.4);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 0.84rem;
+    color: #e09090;
+  }
+
+  .warn-box strong { color: #ff9090; }
+
+  .good-box {
+    background: rgba(74,140,92,0.08);
+    border: 1px solid rgba(74,140,92,0.35);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 0.84rem;
+    color: #90c8a0;
+  }
+
+  .info-box {
+    background: rgba(74,122,184,0.08);
+    border: 1px solid rgba(74,122,184,0.3);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 0.84rem;
+    color: #90b0e0;
+  }
+
+  .divider-thin {
+    height: 1px;
+    background: var(--border);
+    margin: 14px 0;
+  }
+
+  .numbered-list {
+    list-style: none;
+    margin: 6px 0 12px;
+  }
+
+  .numbered-list li {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+
+  .numbered-list li .n {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--saffron);
+    min-width: 18px;
+    padding-top: 2px;
+  }
+
+  table.ay-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 14px;
+    font-size: 0.8rem;
+  }
+
+  table.ay-table th {
+    background: var(--surface2);
+    color: var(--gold);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 6px 10px;
+    text-align: left;
+    border: 1px solid var(--border);
+    letter-spacing: 0.5px;
+  }
+
+  table.ay-table td {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    vertical-align: top;
+  }
+
+  table.ay-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-right: 4px;
+  }
+
+  .tag-v { background: rgba(74,122,184,0.2); color: #90b0e0; }
+  .tag-p { background: rgba(224,123,57,0.2); color: #e09060; }
+  .tag-k { background: rgba(74,140,92,0.2); color: #90c090; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    body { flex-direction: column; }
+    #sidebar { width: 100%; height: auto; position: relative; flex-direction: row; flex-wrap: wrap; }
+    #main { padding: 24px 20px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <h1>Ayurveda<br>Study Guide</h1>
+    <p>One Night Exam Prep</p>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-label">
+      <span>Progress</span>
+      <span id="prog-text">0 / 32</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
+  </div>
+
+  <div class="section-group">
+    <div class="section-label">Part 1 — Foundations</div>
+    <a class="nav-item" href="#t1" data-id="1"><span class="nav-num">01</span> 41 Qualities (Gunas)</a>
+    <a class="nav-item" href="#t2" data-id="2"><span class="nav-num">02</span> Three Mental Energies</a>
+    <a class="nav-item" href="#t3" data-id="3"><span class="nav-num">03</span> 5 Layers (Koshas)</a>
+    <a class="nav-item" href="#t4" data-id="4"><span class="nav-num">04</span> 7 Vital Tissues (Dhatus)</a>
+    <a class="nav-item" href="#t5" data-id="5"><span class="nav-num">05</span> Waste Products (Malas)</a>
+    <a class="nav-item" href="#t6" data-id="6"><span class="nav-num">06</span> Body Types (Prakriti)</a>
+    <a class="nav-item" href="#t7" data-id="7"><span class="nav-num">07</span> Balancing Body Types</a>
+    <a class="nav-item" href="#t8" data-id="8"><span class="nav-num">08</span> Dosha Imbalance Signs</a>
+    <a class="nav-item" href="#t9" data-id="9"><span class="nav-num">09</span> 20 Food Qualities</a>
+    <a class="nav-item" href="#t10" data-id="10"><span class="nav-num">10</span> Digestive Fire (Agni)</a>
+  </div>
+
+  <div class="section-group">
+    <div class="section-label">Part 2 — Food Science</div>
+    <a class="nav-item" href="#t11" data-id="11"><span class="nav-num">11</span> Herbal Preparations</a>
+    <a class="nav-item" href="#t12" data-id="12"><span class="nav-num">12</span> Tridosha (Bioenergies)</a>
+    <a class="nav-item" href="#t13" data-id="13"><span class="nav-num">13</span> 6 Tastes (Shad Rasa)</a>
+    <a class="nav-item" href="#t14" data-id="14"><span class="nav-num">14</span> Mindful Eating</a>
+    <a class="nav-item" href="#t15" data-id="15"><span class="nav-num">15</span> Post-Digestive Effect</a>
+    <a class="nav-item" href="#t16" data-id="16"><span class="nav-num">16</span> Special Effects (Prabhava)</a>
+    <a class="nav-item" href="#t17" data-id="17"><span class="nav-num">17</span> 8 Meal Principles</a>
+    <a class="nav-item" href="#t18" data-id="18"><span class="nav-num">18</span> Time & Portions to Eat</a>
+    <a class="nav-item" href="#t19" data-id="19"><span class="nav-num">19</span> Taste Sequence</a>
+    <a class="nav-item" href="#t20" data-id="20"><span class="nav-num">20</span> Incompatible Foods</a>
+  </div>
+
+  <div class="section-group">
+    <div class="section-label">Part 3 — 12 Food Groups</div>
+    <a class="nav-item" href="#t21" data-id="21"><span class="nav-num">21</span> Anna Paan Overview</a>
+    <a class="nav-item" href="#t22" data-id="22"><span class="nav-num">22</span> Shook Varga — Grains</a>
+    <a class="nav-item" href="#t23" data-id="23"><span class="nav-num">23</span> Shami Varga — Beans</a>
+    <a class="nav-item" href="#t24" data-id="24"><span class="nav-num">24</span> Mansa Varga — Meats</a>
+    <a class="nav-item" href="#t25" data-id="25"><span class="nav-num">25</span> Shak Varga — Vegetables</a>
+    <a class="nav-item" href="#t26" data-id="26"><span class="nav-num">26</span> Harit Varga — Herbs</a>
+    <a class="nav-item" href="#t27" data-id="27"><span class="nav-num">27</span> Phal Varga — Fruits</a>
+    <a class="nav-item" href="#t28" data-id="28"><span class="nav-num">28</span> Jal Varga — Water</a>
+    <a class="nav-item" href="#t29" data-id="29"><span class="nav-num">29</span> Madya Varga — Alcohol</a>
+    <a class="nav-item" href="#t30" data-id="30"><span class="nav-num">30</span> Go Ras Varga — Dairy</a>
+    <a class="nav-item" href="#t31" data-id="31"><span class="nav-num">31</span> Ikshu Varga — Sweeteners</a>
+    <a class="nav-item" href="#t32" data-id="32"><span class="nav-num">32</span> Krutanna — Cooked Foods</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+  <h1 class="page-title">Ayurveda<br>Exam Notes</h1>
+  <p class="page-subtitle">Click each card to expand. Check it off once you've studied it. Good luck tonight! ☽</p>
+
+  <!-- ===== PART 1 ===== -->
+  <div class="chapter-divider"><span>Part 1 — Foundations</span></div>
+
+  <!-- T1 -->
+  <div class="topic-card" id="t1">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 01</div>
+        <div class="topic-title">The 41 Qualities (Gunas) of the Universe</div>
+        <div class="topic-subtitle">Gurvadi · Paradi · Vaisheshik · Adhyatmik</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Ayurveda believes everything in the universe — including our bodies — can be described by <strong>41 specific qualities</strong>. These are split into four groups:</p>
+
+      <div class="sub-title">1. 10 Opposites (Gurvadi) — Physical qualities in pairs</div>
+      <div class="item-grid">
+        <div class="item-box"><div class="item-box-title">Heavy / Light</div><div class="item-box-text">Describes the weight or density of a substance.</div></div>
+        <div class="item-box"><div class="item-box-title">Cold / Hot</div><div class="item-box-text">The thermal nature of food or tissue.</div></div>
+        <div class="item-box"><div class="item-box-title">Dry / Oily</div><div class="item-box-text">The moisture content of a substance.</div></div>
+        <div class="item-box"><div class="item-box-title">+ 7 more pairs</div><div class="item-box-text">Such as Dull/Sharp, Dense/Liquid, Stable/Mobile, Gross/Subtle, Smooth/Rough, Solid/Flowing, Hard/Soft.</div></div>
+      </div>
+
+      <div class="sub-title">2. 10 Logical Qualities (Paradi) — Thinking & action</div>
+      <p>These include reasoning, counting, combining, and practicing. They govern cognitive and volitional processes.</p>
+
+      <div class="sub-title">3. 5 Sensory Qualities (Vaisheshik) — Through the senses</div>
+      <div class="pill-row">
+        <span class="pill highlight">Sight (Form)</span>
+        <span class="pill highlight">Taste</span>
+        <span class="pill highlight">Smell</span>
+        <span class="pill highlight">Touch</span>
+        <span class="pill highlight">Space / Sound</span>
+      </div>
+
+      <div class="sub-title">4. 6 Spiritual Qualities (Adhyatmik) — Inner drives of the mind</div>
+      <div class="pill-row">
+        <span class="pill">Desire</span>
+        <span class="pill">Happiness</span>
+        <span class="pill">Suffering</span>
+        <span class="pill">Effort</span>
+        <span class="pill">Intellect (right/wrong)</span>
+        <span class="pill">+ Memory</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- T2 -->
+  <div class="topic-card" id="t2">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 02</div>
+        <div class="topic-title">The Three Mental Energies (Trigunas)</div>
+        <div class="topic-subtitle">Satva · Rajas · Tamas</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Our minds are controlled by three distinct energies that shape personality and are directly influenced by the food we eat.</p>
+      <div class="item-grid">
+        <div class="item-box">
+          <div class="item-box-title">⬜ SATVA — Purity</div>
+          <div class="item-box-text">Represents peace and wisdom.<br><strong>Boosted by:</strong> Fresh fruits, vegetables, whole grains.</div>
+        </div>
+        <div class="item-box">
+          <div class="item-box-title">🔴 RAJAS — Passion</div>
+          <div class="item-box-text">Represents ambition and restlessness.<br><strong>Fed by:</strong> Caffeine, spicy dishes, fried foods.</div>
+        </div>
+        <div class="item-box">
+          <div class="item-box-title">⬛ TAMAS — Inertia</div>
+          <div class="item-box-text">Represents laziness and confusion.<br><strong>Caused by:</strong> Red meat, leftovers, processed junk, alcohol.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- T3 -->
+  <div class="topic-card" id="t3">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 03</div>
+        <div class="topic-title">The 5 Layers of the Body (Koshas)</div>
+        <div class="topic-subtitle">Annamaya · Pranamaya · Manomaya · Vijnanamaya · Anandamaya</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>A human being is made of five layers or "sheaths" — from the outermost physical to the deepest spiritual.</p>
+      <ol class="numbered-list">
+        <li><span class="n">1.</span><div><strong>Annamaya (Physical)</strong> — Your actual body, built by the food you eat and maintained by exercise.</div></li>
+        <li><span class="n">2.</span><div><strong>Pranamaya (Energy/Breath)</strong> — Your life force; controls breathing and blood circulation.</div></li>
+        <li><span class="n">3.</span><div><strong>Manomaya (Mental)</strong> — Processes thoughts, emotions, joys, and sorrows.</div></li>
+        <li><span class="n">4.</span><div><strong>Vijnanamaya (Wisdom)</strong> — Intellect and higher consciousness; deep understanding and reflection.</div></li>
+        <li><span class="n">5.</span><div><strong>Anandamaya (Bliss)</strong> — Deepest layer of pure joy and peace, connected to the universe.</div></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- T4 -->
+  <div class="topic-card" id="t4">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 04</div>
+        <div class="topic-title">The 7 Vital Tissues (Dhatus)</div>
+        <div class="topic-subtitle">Building blocks that nourish each other in sequence</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>The body relies on 7 basic building blocks. They are produced in order — each one nourishing the next.</p>
+      <table class="ay-table">
+        <tr><th>#</th><th>Sanskrit</th><th>English</th><th>Function</th></tr>
+        <tr><td>1</td><td>Rasa</td><td>Plasma</td><td>Clear fluid from digested food; feeds all cells</td></tr>
+        <tr><td>2</td><td>Rakta</td><td>Blood</td><td>Carries oxygen and nutrients everywhere</td></tr>
+        <tr><td>3</td><td>Mamsa</td><td>Muscle</td><td>Movement and body heat generation</td></tr>
+        <tr><td>4</td><td>Meda</td><td>Fat</td><td>Energy storage; cushions organs</td></tr>
+        <tr><td>5</td><td>Asthi</td><td>Bone</td><td>Structural support of the body</td></tr>
+        <tr><td>6</td><td>Majja</td><td>Bone Marrow</td><td>Soft tissue inside bones; makes blood cells</td></tr>
+        <tr><td>7</td><td>Shukra</td><td>Reproductive Tissue</td><td>Fertility, vitality, and sexual health</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T5 -->
+  <div class="topic-card" id="t5">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 05</div>
+        <div class="topic-title">Waste Products (Malas)</div>
+        <div class="topic-subtitle">Purisha · Mutra · Sweda · Dhatu Mala</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>To stay healthy, the body must constantly flush out waste and toxins.</p>
+      <div class="item-grid">
+        <div class="item-box"><div class="item-box-title">Purisha (Stool)</div><div class="item-box-text">Removes solid waste from the bowels; keeps the gut healthy.</div></div>
+        <div class="item-box"><div class="item-box-title">Mutra (Urine)</div><div class="item-box-text">Removes liquid waste; balances body fluids; keeps kidneys working.</div></div>
+        <div class="item-box"><div class="item-box-title">Sweda (Sweat)</div><div class="item-box-text">Cools the body down; pushes toxins out through the skin.</div></div>
+        <div class="item-box"><div class="item-box-title">Dhatu Mala (Tissue Waste)</div><div class="item-box-text">Minor wastes produced by the 7 tissues — eye crust, ear wax, fingernails, hair.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- T6 -->
+  <div class="topic-card" id="t6">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 06</div>
+        <div class="topic-title">Body Types (Prakriti)</div>
+        <div class="topic-subtitle">Vata · Pitta · Kapha — set at birth by the Doshas</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Your unique physical and mental makeup is determined at birth based on the combination of the three Doshas.</p>
+      <div class="item-grid">
+        <div class="item-box">
+          <div class="item-box-title"><span class="tag tag-v">VATA</span> Air + Space</div>
+          <div class="item-box-text"><strong>Build:</strong> Thin, light.<br><strong>Strengths:</strong> Creative, quick learner, enthusiastic.<br><strong>Tendencies:</strong> Dry skin, cold hands, anxiety, variable energy.</div>
+        </div>
+        <div class="item-box">
+          <div class="item-box-title"><span class="tag tag-p">PITTA</span> Fire + Water</div>
+          <div class="item-box-text"><strong>Build:</strong> Medium, muscular.<br><strong>Strengths:</strong> Sharp intellect, ambitious, focused.<br><strong>Tendencies:</strong> Hot, impatient, anger-prone.</div>
+        </div>
+        <div class="item-box">
+          <div class="item-box-title"><span class="tag tag-k">KAPHA</span> Earth + Water</div>
+          <div class="item-box-text"><strong>Build:</strong> Solid, heavy.<br><strong>Strengths:</strong> Calm, loving, stable, loyal.<br><strong>Tendencies:</strong> Weight gain, sluggishness, resistance to change.</div>
+        </div>
+      </div>
+      <div class="good-box">People can also be <strong>dual types</strong> (Vata-Pitta, Pitta-Kapha, Vata-Kapha) or a perfect balance of all three — called <strong>Tridoshic</strong>.</div>
+    </div>
+  </div>
+
+  <!-- T7 -->
+  <div class="topic-card" id="t7">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 07</div>
+        <div class="topic-title">How to Balance Your Body Type</div>
+        <div class="topic-subtitle">Diet & lifestyle adjustments for each Dosha</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>The principle is <em>opposites balance</em> — counter your Dosha's natural qualities with opposing foods and routines.</p>
+      <div class="item-grid">
+        <div class="item-box">
+          <div class="item-box-title"><span class="tag tag-v">VATA</span> Cold + Dry → Warm + Oily</div>
+          <div class="item-box-text"><strong>Eat:</strong> Warm, oily, cooked foods — soups, stews, sesame oil.<br><strong>Lifestyle:</strong> Grounding yoga, strict daily routine, early bedtime.</div>
+        </div>
+        <div class="item-box">
+          <div class="item-box-title"><span class="tag tag-p">PITTA</span> Hot + Sharp → Cool + Mild</div>
+          <div class="item-box-text"><strong>Eat:</strong> Cooling mild foods — cucumbers, leafy greens, coconut. Avoid spicy food.<br><strong>Lifestyle:</strong> Time in nature, relaxation, avoid midday heat.</div>
+        </div>
+        <div class="item-box">
+          <div class="item-box-title"><span class="tag tag-k">KAPHA</span> Heavy + Slow → Light + Stimulating</div>
+          <div class="item-box-text"><strong>Eat:</strong> Light, spicy, stimulating foods. Avoid heavy dairy and sweets.<br><strong>Lifestyle:</strong> Vigorous exercise, no daytime naps, variety and challenge.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- T8 -->
+  <div class="topic-card" id="t8">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 08</div>
+        <div class="topic-title">Causes and Signs of Dosha Imbalance</div>
+        <div class="topic-subtitle">What throws each Dosha off — and how it shows up</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <table class="ay-table">
+        <tr><th>Dosha</th><th>Caused By</th><th>Signs & Symptoms</th></tr>
+        <tr>
+          <td><span class="tag tag-v">VATA</span></td>
+          <td>Skipped sleep, stress, cold/dry foods, irregular routine</td>
+          <td>Constipation, gas, cracking joints, extreme nervousness, insomnia</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-p">PITTA</span></td>
+          <td>Spicy/acidic foods, alcohol, overworking in heat</td>
+          <td>Heartburn, acne, excessive sweating, irritability, inflammation</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-k">KAPHA</span></td>
+          <td>Too many sweets, sedentary lifestyle, cold/damp weather</td>
+          <td>Weight gain, thick mucus, depression, brain fog, lethargy</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T9 -->
+  <div class="topic-card" id="t9">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 09</div>
+        <div class="topic-title">The 20 Food Qualities in Nutrition</div>
+        <div class="topic-subtitle">10 pairs of opposing qualities used to heal the body</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Ayurveda looks at 20 specific physical qualities (10 pairs of opposites) to select healing foods and herbs.</p>
+      <div class="pill-row">
+        <span class="pill">Heavy ↔ Light</span>
+        <span class="pill">Cold ↔ Hot</span>
+        <span class="pill">Oily ↔ Dry</span>
+        <span class="pill">Smooth ↔ Rough</span>
+        <span class="pill">Stable ↔ Mobile</span>
+        <span class="pill">Gross ↔ Subtle</span>
+        <span class="pill">Dense ↔ Liquid</span>
+        <span class="pill">Soft ↔ Hard</span>
+        <span class="pill">Dull ↔ Sharp</span>
+        <span class="pill">Solid ↔ Flowing</span>
+      </div>
+      <div class="info-box">
+        <strong>How it works:</strong> If you have too much heat (Pitta excess), use a "cool" herb like <em>Vetiver</em>. If you have too much wetness/congestion (Kapha excess), use a "dry" spice like <em>Turmeric</em>. Examples: Ashwagandha is Heavy; Cucumber is Cold; Sesame oil is Oily; Aloe vera is Smooth; Rice is Stable.
+      </div>
+    </div>
+  </div>
+
+  <!-- T10 -->
+  <div class="topic-card" id="t10">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 10</div>
+        <div class="topic-title">The Digestive Fire (Agni)</div>
+        <div class="topic-subtitle">13 types — Jatharagni · Dhatvagni · Bhutagni</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Agni is the internal "fire" that digests food and converts it into energy. There are <strong>13 types</strong> in total.</p>
+      <div class="item-grid">
+        <div class="item-box">
+          <div class="item-box-title">1 × Jatharagni</div>
+          <div class="item-box-text">The <strong>main fire</strong> in the stomach and intestines. Digests every meal you eat. The master Agni — all others depend on its strength.</div>
+        </div>
+        <div class="item-box">
+          <div class="item-box-title">7 × Dhatvagni</div>
+          <div class="item-box-text">One fire per Dhatu. Converts digested food into the 7 body tissues — plasma → blood → muscle → fat → bone → marrow → reproductive tissue.</div>
+        </div>
+        <div class="item-box">
+          <div class="item-box-title">5 × Bhutagni</div>
+          <div class="item-box-text">One fire per element. Processes the 5 natural elements (Earth, Water, Fire, Air, Space) within the body.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PART 2 ===== -->
+  <div class="chapter-divider"><span>Part 2 — Food Science</span></div>
+
+  <!-- T11 -->
+  <div class="topic-card" id="t11">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 11</div>
+        <div class="topic-title">Herbal Preparations (Kashaya Kalpana)</div>
+        <div class="topic-subtitle">6 forms — from strongest to lightest on digestion</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Herbs are prepared differently depending on a person's digestive strength, from most potent to gentlest:</p>
+      <table class="ay-table">
+        <tr><th>#</th><th>Form</th><th>Sanskrit</th><th>Method & Notes</th></tr>
+        <tr><td>1</td><td>Fresh Juice</td><td>Swaras</td><td>Strongest form. Absorbed immediately. Only for very strong digestion.</td></tr>
+        <tr><td>2</td><td>Paste</td><td>Kalka</td><td>Herbs crushed with water. Lighter than juice; has more fiber.</td></tr>
+        <tr><td>3</td><td>Boiled Decoction</td><td>Kwath</td><td>Herbs boiled down in water. Light on stomach; systemic healing.</td></tr>
+        <tr><td>4</td><td>Cold Infusion</td><td>Hima</td><td>Soaked in cold water. Very cooling, detoxifying; great for reducing Pitta.</td></tr>
+        <tr><td>5</td><td>Warm Infusion</td><td>Fant</td><td>Steeped in warm water (like tea). Great for chronic conditions.</td></tr>
+        <tr><td>6</td><td>Powder</td><td>Churna</td><td>Dried herbs ground up; taken with water to aid digestion.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T12 -->
+  <div class="topic-card" id="t12">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 12</div>
+        <div class="topic-title">The 3 Bioenergies (Tridosha)</div>
+        <div class="topic-subtitle">Vata · Pitta · Kapha — detailed elemental breakdown</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>The Doshas are the three fundamental life forces controlling physical and mental health. (Detailed characteristics separate from Prakriti types.)</p>
+      <table class="ay-table">
+        <tr><th>Dosha</th><th>Elements</th><th>Controls</th><th>Imbalance</th><th>Balance With</th></tr>
+        <tr><td><span class="tag tag-v">Vata</span></td><td>Air + Space</td><td>Movement, creativity, nerve signals</td><td>Anxiety, insomnia, digestion issues</td><td>Warm, grounding foods</td></tr>
+        <tr><td><span class="tag tag-p">Pitta</span></td><td>Fire + Water</td><td>Metabolism, intellect, transformation</td><td>Irritability, inflammation, burning</td><td>Cooling, soothing foods</td></tr>
+        <tr><td><span class="tag tag-k">Kapha</span></td><td>Earth + Water</td><td>Structure, lubrication, immunity</td><td>Weight gain, lethargy, mucus</td><td>Light, stimulating foods</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T13 -->
+  <div class="topic-card" id="t13">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 13</div>
+        <div class="topic-title">The 6 Tastes (Shad Rasa)</div>
+        <div class="topic-subtitle">Madhura · Amla · Lavana · Katu · Tikta · Kashaya</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Every meal should include all six tastes to keep the body in perfect balance.</p>
+      <table class="ay-table">
+        <tr><th>Taste</th><th>Sanskrit</th><th>Benefit</th><th>Excess Causes</th></tr>
+        <tr><td>Sweet</td><td>Madhura</td><td>Nourishing, gives energy, builds tissues</td><td>Weight gain, diabetes</td></tr>
+        <tr><td>Sour</td><td>Amla</td><td>Refreshing, improves digestion</td><td>Heartburn, acidic conditions</td></tr>
+        <tr><td>Salty</td><td>Lavana</td><td>Enhances flavor, promotes hydration</td><td>Water retention, hypertension</td></tr>
+        <tr><td>Pungent (Spicy)</td><td>Katu</td><td>Stimulates digestion, clears toxins</td><td>Inflammation, irritation</td></tr>
+        <tr><td>Bitter</td><td>Tikta</td><td>Detoxifying, cooling, antibacterial</td><td>Dryness, depletion of tissues</td></tr>
+        <tr><td>Astringent</td><td>Kashaya</td><td>Dries excess moisture, tones tissues</td><td>Constipation, stiffness</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T14 -->
+  <div class="topic-card" id="t14">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 14</div>
+        <div class="topic-title">Mindful Eating</div>
+        <div class="topic-subtitle">Paying full attention to food to improve digestion</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <div class="sub-title">How to Practice</div>
+      <p>Eat slowly, chew thoroughly, focus on the smell and texture of food. Turn off the TV and all distractions. Stop eating the moment you feel satisfied.</p>
+      <div class="sub-title">Benefits</div>
+      <div class="pill-row">
+        <span class="pill good">Prevents overeating</span>
+        <span class="pill good">Better nutrient absorption</span>
+        <span class="pill good">More joyful eating experience</span>
+        <span class="pill good">Improved digestive strength (Agni)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- T15 -->
+  <div class="topic-card" id="t15">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 15</div>
+        <div class="topic-title">The Post-Digestive Effect (Vipaka)</div>
+        <div class="topic-subtitle">How food affects the body AFTER digestion — beyond the immediate taste</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p><strong>Rasa</strong> = the immediate taste on your tongue. <strong>Vipaka</strong> = the effect on the body after the food has been fully digested. The same taste can have a different post-digestive effect.</p>
+      <div class="item-grid">
+        <div class="item-box"><div class="item-box-title">Sweet Vipaka</div><div class="item-box-text">Builds bodily strength; nourishes and expands tissues.</div></div>
+        <div class="item-box"><div class="item-box-title">Sour Vipaka</div><div class="item-box-text">Enhances digestive efficiency and nutrient absorption.</div></div>
+        <div class="item-box"><div class="item-box-title">Pungent Vipaka</div><div class="item-box-text">Stimulates circulation and speeds up metabolism.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- T16 -->
+  <div class="topic-card" id="t16">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 16</div>
+        <div class="topic-title">Special Metabolic Impact (Prabhava)</div>
+        <div class="topic-subtitle">Unique healing effects that cannot be explained by taste or qualities alone</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Sometimes a food or herb has a "magical" or unexpected healing power that goes beyond its basic taste, quality, or post-digestive effect. This is called <strong>Prabhava</strong>.</p>
+      <div class="item-grid">
+        <div class="item-box"><div class="item-box-title">Jatamansi</div><div class="item-box-text">Uniquely calming for the emotions and nervous system.</div></div>
+        <div class="item-box"><div class="item-box-title">Brahmi</div><div class="item-box-text">Famous for its special power to boost memory and mental clarity.</div></div>
+        <div class="item-box"><div class="item-box-title">Ashwagandha</div><div class="item-box-text">Special ability to rejuvenate the entire body and promote longevity.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- T17 -->
+  <div class="topic-card" id="t17">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 17</div>
+        <div class="topic-title">The 8 Principles of Ayurvedic Meals</div>
+        <div class="topic-subtitle">Eight rules for selecting and eating food</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <ol class="numbered-list">
+        <li><span class="n">1.</span><div><strong>Prakruti (Nature)</strong> — The food's natural qualities: heavy or light, hot or cold.</div></li>
+        <li><span class="n">2.</span><div><strong>Karan (Processing)</strong> — How you cook it: steaming, frying, adding spices changes the food's properties.</div></li>
+        <li><span class="n">3.</span><div><strong>Samyoga (Combination)</strong> — Mixing the right foods together so they digest well and don't create toxic combinations.</div></li>
+        <li><span class="n">4.</span><div><strong>Rashi (Quantity)</strong> — Eating the correct portion size so you don't overeat.</div></li>
+        <li><span class="n">5.</span><div><strong>Desha (Place)</strong> — Eating local and seasonal foods from your region.</div></li>
+        <li><span class="n">6.</span><div><strong>Kala (Time)</strong> — Eating at the right time of day and adjusting for the current season.</div></li>
+        <li><span class="n">7.</span><div><strong>Upayoga Samstha (Rules for Use)</strong> — Eating in a calm environment and chewing well.</div></li>
+        <li><span class="n">8.</span><div><strong>Upayokta (Consumer)</strong> — Choosing foods that fit <em>your</em> unique body type (Prakriti).</div></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- T18 -->
+  <div class="topic-card" id="t18">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 18</div>
+        <div class="topic-title">The Right Time, Condition & Portions to Eat</div>
+        <div class="topic-subtitle">When and how much — Ayurvedic meal rules</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <div class="sub-title">Timing</div>
+      <p>Your biggest, heaviest meal should be <strong>lunch (11 AM – 2 PM)</strong> when the digestive fire (Jatharagni) is strongest. Dinner should be the lightest meal of the day.</p>
+      <div class="sub-title">Mental Condition</div>
+      <p>Never eat when stressed, upset, or distracted — your body will not digest the food properly and Ama (toxic waste) will be formed.</p>
+      <div class="sub-title">Portion Size — The 1/3 Rule</div>
+      <div class="info-box">Imagine your stomach in three equal parts.<br>
+        → Fill <strong>1/3 with solid food</strong><br>
+        → Fill <strong>1/3 with liquid</strong><br>
+        → Leave <strong>1/3 completely empty</strong> for the food to churn properly.<br><br>
+        Stop eating when you are <strong>80% full.</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- T19 -->
+  <div class="topic-card" id="t19">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 19</div>
+        <div class="topic-title">The Taste Sequence for a Meal</div>
+        <div class="topic-subtitle">The order of 6 tastes optimises digestion</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>The order in which you eat the 6 tastes during a meal directly changes how well you digest it.</p>
+      <ol class="numbered-list">
+        <li><span class="n">1st</span><div><strong>Sweet</strong> — Prepares and primes the digestive system.</div></li>
+        <li><span class="n">2nd</span><div><strong>Sour + Salty</strong> — Gets the digestive juices fully flowing.</div></li>
+        <li><span class="n">3rd</span><div><strong>Pungent (Spicy) + Bitter</strong> — Boosts metabolism and burns through the food.</div></li>
+        <li><span class="n">Last</span><div><strong>Astringent</strong> — Balances the palate and helps the body absorb all nutrients.</div></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- T20 -->
+  <div class="topic-card" id="t20">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 20</div>
+        <div class="topic-title">Incompatible Food Combinations (Virudhaharam)</div>
+        <div class="topic-subtitle">16 types of bad combinations that create Ama (toxic waste)</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Mixing the wrong foods confuses the digestive system and creates <strong>Ama</strong> (toxic metabolic waste) in the body. There are 16 categories of incompatibility including seasonal mismatches, wrong cooking methods, and mixing hot and cold.</p>
+      <div class="sub-title">Common Toxic Combinations to Know</div>
+      <div class="warn-box">
+        <strong>⚠ Never combine these:</strong><br>
+        • Honey + Ghee in <em>equal parts</em><br>
+        • Milk + sour fruits (e.g., milk with mango or banana)<br>
+        • Fish + dairy products<br>
+        • Eating out of season for your body type<br>
+        • Mixing hot and cold items improperly (e.g., ice water with a hot meal)
+      </div>
+      <p>Regularly doing this causes gas, bloating, and eventually chronic disease.</p>
+    </div>
+  </div>
+
+  <!-- ===== PART 3 ===== -->
+  <div class="chapter-divider"><span>Part 3 — The 12 Food Groups (Anna Paan Vidhi)</span></div>
+
+  <!-- T21 -->
+  <div class="topic-card" id="t21">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 21</div>
+        <div class="topic-title">Anna Paan Vidhi — Overview of the 12 Food Groups</div>
+        <div class="topic-subtitle">A complete categorisation of all food for balanced healing</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Ayurveda divides all food and drink into <strong>12 specific groups (Vargas)</strong> to help build a balanced, nourishing diet that is easy to navigate for healing.</p>
+      <div class="pill-row">
+        <span class="pill">22. Shook (Grains)</span>
+        <span class="pill">23. Shami (Beans)</span>
+        <span class="pill">24. Mansa (Meats)</span>
+        <span class="pill">25. Shak (Vegetables)</span>
+        <span class="pill">26. Harit (Herbs)</span>
+        <span class="pill">27. Phal (Fruits)</span>
+        <span class="pill">28. Jal (Water)</span>
+        <span class="pill">29. Madya (Alcohol)</span>
+        <span class="pill">30. Go Ras (Dairy)</span>
+        <span class="pill">31. Ikshu (Sweeteners)</span>
+        <span class="pill">32. Krutanna (Cooked Foods)</span>
+        <span class="pill">+ Ahar Upyogi (Cooking Agents)</span>
+      </div>
+      <div class="good-box">The <strong>Ahar Upyogi Varga</strong> covers cooking agents like salts, spices, and oils — not just for flavor but for preserving food, ensuring absorption of fat-soluble vitamins, and adding anti-inflammatory benefits to daily meals.</div>
+    </div>
+  </div>
+
+  <!-- T22 -->
+  <div class="topic-card" id="t22">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 22</div>
+        <div class="topic-title">Shook Varga — Grains and Cereals</div>
+        <div class="topic-subtitle">Rice · Barley · Wheat · Millets</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Main sources of energy and vitality. Generally sweet, cooling, and filling. Specific grains have special healing powers.</p>
+      <table class="ay-table">
+        <tr><th>Grain</th><th>Key Properties</th><th>Special Use</th></tr>
+        <tr><td><strong>Shali / Rakta Shali</strong><br>(White / Red Rice)</td><td>Cooling, deeply moisturizing, balances all Doshas</td><td>Rakta Shali (red rice) — excellent for skin and wound healing</td></tr>
+        <tr><td><strong>Shashtik</strong><br>(60-Day Rice)</td><td>Cooling, very healing</td><td>Perfect for building strength and balancing all Doshas</td></tr>
+        <tr><td><strong>Barley</strong></td><td>Light, dry</td><td><strong>Best grain for healing broken bones</strong></td></tr>
+        <tr><td><strong>Wheat</strong></td><td>Heavy, sweet</td><td>Deep strength and long-lasting endurance</td></tr>
+        <tr><td><strong>Millets</strong></td><td>Light, cooling</td><td>Absorbs water in intestines — excellent for stopping diarrhea</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T23 -->
+  <div class="topic-card" id="t23">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 23</div>
+        <div class="topic-title">Shami Varga — Beans and Legumes</div>
+        <div class="topic-subtitle">Plant proteins — Moong · Urad · Kulattha · Chickpeas</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Great for building muscle; most beans are dry and can cause gas. Choose carefully based on your needs.</p>
+      <table class="ay-table">
+        <tr><th>Bean</th><th>Nature</th><th>Best For</th><th>Watch Out</th></tr>
+        <tr><td><strong>Moong (Green Gram)</strong></td><td>Cooling, very light</td><td><strong>Best dal overall</strong> — easy digestion, healing meals like Khichdi. No bloating.</td><td>—</td></tr>
+        <tr><td><strong>Urad (Black Gram)</strong></td><td>Heavy, warming</td><td>Building massive muscle mass and energy; great for Vata types</td><td>Hard to digest; avoid if digestion is weak</td></tr>
+        <tr><td><strong>Kulattha (Horse Gram)</strong></td><td>Heating, dry</td><td>Burns fat, clears toxins, relieves breathing problems</td><td>Too heating for Pitta types</td></tr>
+        <tr><td><strong>Chickpeas / Lentils</strong></td><td>Dry, moderate</td><td>Weight management, muscle health</td><td>Can cause gas/bloating</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T24 -->
+  <div class="topic-card" id="t24">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 24</div>
+        <div class="topic-title">Mansa Varga — Meats</div>
+        <div class="topic-subtitle">Used to quickly build muscle and strength</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Meat is used in Ayurveda as a powerful tool for quickly building muscle and bodily strength. Different animals have very different effects.</p>
+      <table class="ay-table">
+        <tr><th>Meat</th><th>Properties</th><th>Best For</th></tr>
+        <tr><td><strong>Mutton</strong></td><td>Closest to human tissue</td><td><strong>Safest meat</strong>; balances all three Doshas</td></tr>
+        <tr><td><strong>Chicken</strong></td><td>Heating</td><td>Boosts reproductive capacity; promotes sweating to break fever</td></tr>
+        <tr><td><strong>Pork</strong></td><td>Heating</td><td>Boosts reproductive capacity and strength</td></tr>
+        <tr><td><strong>Fish (Rohu = best)</strong></td><td>Strengthening</td><td>Builds strength; Rohu is the best variety</td></tr>
+        <tr><td><strong>Beef</strong></td><td>Extremely heavy</td><td>Only as medicine for severe muscle-wasting disease. Regular use causes disorders.</td></tr>
+      </table>
+      <div class="warn-box"><strong>⚠ Fish + Dairy</strong> is a major incompatible combination — causes severe metabolic issues.</div>
+    </div>
+  </div>
+
+  <!-- T25 -->
+  <div class="topic-card" id="t25">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 25</div>
+        <div class="topic-title">Shak Varga — Vegetables</div>
+        <div class="topic-subtitle">Leafy greens and standard vegetables — heavy; must be cooked</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Vegetables provide essential fiber and vitamins, but Ayurveda considers them <strong>"heavy"</strong> and warns they can carry diseases or cause severe gas if not cooked properly. Consume in moderation, cooked, and balanced with spices.</p>
+      <table class="ay-table">
+        <tr><th>Vegetable</th><th>Properties &amp; Uses</th></tr>
+        <tr><td><strong>Spinach</strong></td><td>Relieves constipation; but increases gas (Vata). Cook well.</td></tr>
+        <tr><td><strong>White Pumpkin</strong></td><td>Excellent for balancing all three Doshas; smoothly flushes out urine and stool.</td></tr>
+        <tr><td><strong>Cucumber</strong></td><td>Cooling diuretic; reduces heat (Pitta).</td></tr>
+        <tr><td><strong>Bathua &amp; Chaurai</strong></td><td>Fantastic natural detoxifiers and blood purifiers.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T26 -->
+  <div class="topic-card" id="t26">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 26</div>
+        <div class="topic-title">Harit Varga — Fresh Herbs and Spices</div>
+        <div class="topic-subtitle">Natural medicines — Ginger · Tulsi · Garlic · Coriander</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>These are natural medicines and appetizers — <em>not</em> regular vegetables. Usually spicy or bitter, used to spark digestion, purify blood, and kill intestinal worms.</p>
+      <table class="ay-table">
+        <tr><th>Herb/Spice</th><th>Key Power</th></tr>
+        <tr><td><strong>Ginger</strong></td><td>Powerful throat purifier; sparks digestion; fixes low appetite. Avoid in summer if skin conditions are present.</td></tr>
+        <tr><td><strong>Tulsi (Holy Basil)</strong></td><td>Fantastic heart tonic; internal deodorant; cures hiccups, coughs, and asthma/breathing problems.</td></tr>
+        <tr><td><strong>Coriander &amp; Fennel</strong></td><td>Excellent cooling herbs; cardiac tonics; improve appetite.</td></tr>
+        <tr><td><strong>Garlic</strong></td><td>Purifies blood; kills intestinal worms; heating in nature.</td></tr>
+        <tr><td><strong>Ajwain</strong></td><td>Powerful cardiac tonic; aids digestion.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T27 -->
+  <div class="topic-card" id="t27">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 27</div>
+        <div class="topic-title">Phal Varga — Fruits</div>
+        <div class="topic-subtitle">Most natural food for humans — sweet, cooling, light</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Fruits are considered the most natural foods for humans — generally sweet, cooling, light to digest, and packed with energy.</p>
+      <table class="ay-table">
+        <tr><th>Fruit</th><th>Properties &amp; Uses</th></tr>
+        <tr><td><strong>Grapes &amp; Raisins (Munnaka)</strong></td><td>Relieve extreme thirst; repair muscle tissue; fight fevers and inflammation.</td></tr>
+        <tr><td><strong>Dates</strong></td><td>Build strength; cool the body; good for thirst and inflammation.</td></tr>
+        <tr><td><strong>Coconut</strong></td><td>Very cooling; promotes physical strength; balances excess heat (Pitta).</td></tr>
+        <tr><td><strong>Mango (fully ripe)</strong></td><td>Heavy, sweet; supercharges skin tone and reproductive strength.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T28 -->
+  <div class="topic-card" id="t28">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 28</div>
+        <div class="topic-title">Jal Varga — Water</div>
+        <div class="topic-subtitle">A vital healing element — properties vary by source and season</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Ayurveda takes water very seriously. Its healing properties change completely based on the season and the soil or rock it touches.</p>
+      <table class="ay-table">
+        <tr><th>Source</th><th>Properties</th></tr>
+        <tr><td><strong>Rainwater</strong></td><td>Described as "celestial" — purest, lightest, and best to drink. Autumn rainwater is especially highly rated.</td></tr>
+        <tr><td><strong>Himalayan River Water</strong></td><td>Considered holy and pure; healing properties.</td></tr>
+        <tr><td><strong>Other River Water</strong></td><td>Can be healing or disease-causing depending on the mountains it flows from.</td></tr>
+        <tr><td><strong>Well Water</strong></td><td>Acceptable if clean and free-flowing.</td></tr>
+      </table>
+      <div class="warn-box"><strong>⚠ Never drink</strong> water that is slimy, foul-smelling, stagnant, or filled with insects — causes disease.</div>
+    </div>
+  </div>
+
+  <!-- T29 -->
+  <div class="topic-card" id="t29">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 29</div>
+        <div class="topic-title">Madya Varga — Alcoholic Beverages</div>
+        <div class="topic-subtitle">Used as medicines in strict moderation</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Fermented drinks are actually used as medicines in Ayurveda — strictly in moderation. Because alcohol is hot, sour, and absorbs into the body instantly, it is effective at balancing cold, painful Vata conditions.</p>
+      <table class="ay-table">
+        <tr><th>Drink</th><th>Sanskrit</th><th>Medicinal Use</th></tr>
+        <tr><td>Rice Wine</td><td>Sura</td><td>Treats anemia, piles, and urine retention</td></tr>
+        <tr><td>Honey Wine (Mead)</td><td>—</td><td>Excellent digestive aid and cardiac tonic</td></tr>
+        <tr><td>Vinegar</td><td>Shukta</td><td>Helps cure jaundice and kills intestinal worms</td></tr>
+      </table>
+      <div class="warn-box"><strong>⚠ Abuse</strong> of alcohol leads to toxicity and severe disease. These are medicines at correct doses, not recreational substances.</div>
+    </div>
+  </div>
+
+  <!-- T30 -->
+  <div class="topic-card" id="t30">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 30</div>
+        <div class="topic-title">Go Ras Varga — Dairy Products</div>
+        <div class="topic-subtitle">Supreme health tonic — Cow's milk · Yogurt · Ghee · Buttermilk</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Dairy, especially from cows, is considered a supreme health tonic in Ayurveda. It is central to building deep strength, immunity, and mental function.</p>
+      <table class="ay-table">
+        <tr><th>Dairy</th><th>Properties &amp; Uses</th><th>Cautions</th></tr>
+        <tr><td><strong>Cow's Milk</strong></td><td>Powerful rejuvenator; promotes Ojas (core vitality and life force)</td><td>—</td></tr>
+        <tr><td><strong>Buffalo's Milk</strong></td><td>Colder and heavier than cow's milk; great cure for insomnia</td><td>Hard to digest</td></tr>
+        <tr><td><strong>Camel's Milk</strong></td><td>Hot and slightly salty; cures joint pain and constipation</td><td>—</td></tr>
+        <tr><td><strong>Yogurt (Dahi)</strong></td><td>Good appetizer; treats cold conditions and diarrhea</td><td><strong>Never eat in summer, autumn, or spring</strong>; avoid with bleeding issues</td></tr>
+        <tr><td><strong>Buttermilk (Takra)</strong></td><td>Lighter than yogurt; actively cures swelling and digestion issues</td><td>—</td></tr>
+        <tr><td><strong>Ghee (Clarified Butter)</strong></td><td><strong>Most celebrated dairy product.</strong> Boosts memory, intelligence, and digestion. Aged ghee treats poisoning, fainting, and epilepsy.</td><td>Heavy; use in appropriate quantities</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T31 -->
+  <div class="topic-card" id="t31">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 31</div>
+        <div class="topic-title">Ikshu Varga — Sugarcane and Sweeteners</div>
+        <div class="topic-subtitle">Honey · Jaggery · Sugar — with a critical safety warning</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>Natural sweeteners give quick, clean energy. Each has a distinct therapeutic use.</p>
+      <table class="ay-table">
+        <tr><th>Sweetener</th><th>Properties &amp; Uses</th></tr>
+        <tr><td><strong>Fresh Sugarcane Juice</strong></td><td>Cooling and healthy; machine-pressed juice can cause inflammation.</td></tr>
+        <tr><td><strong>Jaggery (Gud)</strong></td><td>Cleanses urine; aged jaggery purifies blood and boosts physical strength.</td></tr>
+        <tr><td><strong>Mishri (Rock Candy)</strong></td><td>Instantly cooling; stops bleeding disorders.</td></tr>
+        <tr><td><strong>Honey</strong></td><td>Acts as a carrier <em>(Yogavahi)</em> — pulls herbal medicines deep into the body's tissues. Old honey is excellent for weight loss.</td></tr>
+      </table>
+      <div class="warn-box">
+        <strong>⚠ CRITICAL — Never Heat Honey!</strong><br>
+        Heating honey creates a chemical reaction (producing HMF toxins) that turns it into a <strong>lethal, cancer-causing poison</strong>. It ruins metabolism and is extremely difficult to treat. Never cook honey, add it to hot liquids, or mix it with equal parts Ghee.
+      </div>
+    </div>
+  </div>
+
+  <!-- T32 -->
+  <div class="topic-card" id="t32">
+    <div class="topic-header" onclick="toggleCard(this)">
+      <div class="topic-check" onclick="toggleDone(event, this)"></div>
+      <div class="topic-title-wrap">
+        <div class="topic-num">TOPIC 32</div>
+        <div class="topic-title">Krutanna Varga — Processed and Cooked Foods</div>
+        <div class="topic-subtitle">Gruels · Khichdi · Sattu · Roti · Sweets</div>
+      </div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="topic-body">
+      <p>This category focuses on how cooking transforms raw ingredients into healing meals. Cooking changes a food's qualities, digestibility, and therapeutic effect.</p>
+
+      <div class="sub-title">The Healing Gruels (Rice Soups) — Easiest to Digest</div>
+      <table class="ay-table">
+        <tr><th>Gruel</th><th>Description &amp; Use</th></tr>
+        <tr><td><strong>Manda</strong></td><td>Just grain-less rice water. Gives instant life-saving energy to the elderly or those recovering from fasting.</td></tr>
+        <tr><td><strong>Peya</strong></td><td>Very watery rice. Rejuvenates the body after severe illness; induces healthy sweating.</td></tr>
+        <tr><td><strong>Vilepi</strong></td><td>Thick rice porridge. Stops diarrhea; nourishes the heart.</td></tr>
+      </table>
+
+      <div class="sub-title">Everyday Healing Meals</div>
+      <table class="ay-table">
+        <tr><th>Food</th><th>Effect</th></tr>
+        <tr><td><strong>Khichdi (Krishra)</strong></td><td>Rice + dal mix. Heavy but powerfully enhances intelligence and reproductive strength.</td></tr>
+        <tr><td><strong>Sattu</strong></td><td>Roasted grain powder in water. Provides instant, hydrating, cooling energy in summer.</td></tr>
+        <tr><td><strong>Roti (Wheat flatbread)</strong></td><td>Builds strength but requires a very strong digestive fire to process.</td></tr>
+        <tr><td><strong>Puri</strong></td><td>Deep-fried; builds strength but heavier.</td></tr>
+      </table>
+
+      <div class="sub-title">Sweets</div>
+      <table class="ay-table">
+        <tr><th>Sweet</th><th>Special Property</th></tr>
+        <tr><td><strong>Jalebi (Kundalini)</strong></td><td>Boosts reproductive health; when eaten with yogurt, it <em>cures migraines</em>.</td></tr>
+        <tr><td><strong>Bundi Laddo</strong></td><td>Specifically noted as being great for <em>eye health</em>.</td></tr>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  const TOTAL = 32;
+  let done = new Set(JSON.parse(localStorage.getItem('ay_done') || '[]'));
+
+  function saveDone() {
+    localStorage.setItem('ay_done', JSON.stringify([...done]));
+  }
+
+  function updateProgress() {
+    const count = done.size;
+    document.getElementById('prog-text').textContent = count + ' / ' + TOTAL;
+    document.getElementById('prog-fill').style.width = (count / TOTAL * 100) + '%';
+  }
+
+  function applyDoneState() {
+    done.forEach(id => {
+      const card = document.getElementById('t' + id);
+      if (card) card.classList.add('done');
+      const navItem = document.querySelector('[data-id="' + id + '"]');
+      if (navItem) navItem.classList.add('done');
+    });
+    updateProgress();
+  }
+
+  function toggleDone(e, checkEl) {
+    e.stopPropagation();
+    const card = checkEl.closest('.topic-card');
+    const id = parseInt(card.id.replace('t', ''));
+    if (done.has(id)) {
+      done.delete(id);
+      card.classList.remove('done');
+      const navItem = document.querySelector('[data-id="' + id + '"]');
+      if (navItem) navItem.classList.remove('done');
+    } else {
+      done.add(id);
+      card.classList.add('done');
+      const navItem = document.querySelector('[data-id="' + id + '"]');
+      if (navItem) navItem.classList.add('done');
+    }
+    saveDone();
+    updateProgress();
+  }
+
+  function toggleCard(headerEl) {
+    const card = headerEl.closest('.topic-card');
+    const isOpen = card.classList.contains('open');
+    // close all
+    document.querySelectorAll('.topic-card.open').forEach(c => c.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+  }
+
+  // Open first card by default
+  document.querySelector('.topic-card').classList.add('open');
+
+  applyDoneState();
+</script>
+</body>
+</html>
